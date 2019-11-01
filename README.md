@@ -1,4 +1,4 @@
-# JARVIS - Personal Assistant for Windows
+# J.A.R.V.I.S - Personal Assistant for Windows
 Personal Assistant with useful features for Windows written in python. Simple and easy to use.
 
 # Features
