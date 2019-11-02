@@ -1,4 +1,5 @@
 import os
+os.system('color 3f')
 import speech_recognition as sr
 from time import ctime
 import time
@@ -8,7 +9,7 @@ import math
 from random import *
 import wikipedia
 import pygame
-os.system('color 3f')
+
 
 def say(audioString):
     print(audioString)
