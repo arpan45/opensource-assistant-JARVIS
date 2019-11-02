@@ -8,7 +8,7 @@ import math
 from random import *
 import wikipedia
 import pygame
-
+os.system('color 3f')
 
 def say(audioString):
     print(audioString)
@@ -44,6 +44,29 @@ def assistant(data):
         os.system("rundll32.exe user32.dll,LockWorkStation")
     if "put my laptop in sleep mode" in data:
         os.system("rundll32.exe powrprof.dll,SetSuspendState 0,1,0")
+    if "minimise windows" in data:
+        os.system('''powershell -command "(new-object -com shell.application).minimizeall()"''')
+    if "task view" in data :
+        pyautogui.keyDown("win")
+        pyautogui.press("tab")
+        pyautogui.keyUp("win")
+    if "close current window" in data :
+        pyautogui.keyDown("alt")
+        pyautogui.press("f4")
+        pyautogui.keyUp("alt")
+    if "show start menu" in data :
+        pyautogui.press("win")
+
+    if "type" in data :
+        data = data.split(" ")
+        length=len(data)
+        term=data[1:length]
+        pyautogui.typewrite("\t"+' '.join(term))
+    if "take screenshot" in data :
+        pyautogui.screenshot('screenshot.png')
+    if "press enter" in data:
+        pyautogui.press("enter")    
+    
     if "how are you" in data:
         say("I am fine sir")
     if "hey Jarvis"in data or "hello Jarvis"in data:
