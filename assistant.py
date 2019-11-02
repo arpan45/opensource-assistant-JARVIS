@@ -9,6 +9,8 @@ import math
 from random import *
 import wikipedia
 import pygame
+import pyautogui
+pyautogui.FAILSAFE = False
 
 
 def say(audioString):
