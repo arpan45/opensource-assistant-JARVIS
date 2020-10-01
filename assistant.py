@@ -167,6 +167,19 @@ def assistant(data):
 
         URL = "https://www.google.com/maps/place/" + location + "/&amp;"
         webbrowser.open(URL, new=2)
+        
+    if "excel" in data: 
+        assistant_speaks("Opening Microsoft Excel") 
+        os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office 2013\\Excel 2013.lnk') 
+       
+    if "word" in data: 
+        assistant_speaks("Opening Microsoft Word") 
+        os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office 2013\\Word 2013.lnk') 
+        
+    if "chrome" in data: 
+        assistant_speaks("Google Chrome") 
+        os.startfile('C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')     
+     
 
 
 time.sleep(2)
