@@ -10,7 +10,10 @@ from random import *
 import wikipedia
 import pygame
 import pyautogui
+import requests
 pyautogui.FAILSAFE = False
+
+IP_URL = 'https://api.ipify.org'
 
 
 def say(audioString):
@@ -135,6 +138,15 @@ def assistant(data):
             str_fac=str(fac)
             say(str_fac)
 
+    if "my ip" in data:
+        ip = requests.get(IP_URL).text
+        say(f"Your IP address is {ip}")
+
+    if "news" in data:
+        url = "https://www.bbc.com/"
+        webbrowser.open_new_tab(url)
+
+
     if "take a note" in data:
         data=data.split(" ")
         file=open("note.txt", "a")
@@ -146,6 +158,14 @@ def assistant(data):
             say("Ok.Sir!")
         if "yes" in data:
             say("Go on Sir")
+
+    if "weather in" in data:
+        data=data.split(" ")
+        length=len(data)
+        if length>2:
+            city = data[2]
+            url = f"https://www.timeanddate.com/weather/?query={city}"
+            webbrowser.open(url)
 
     if "who is" in data or "what is" in data:
         data=data.split(" ")
