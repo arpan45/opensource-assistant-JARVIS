@@ -174,3 +174,73 @@ say("Hello Sir, what can I do for you?")
 while 1:
     data = recordAudio()
     assistant(data)
+
+elif "wikipedia" in query: 
+
+            webbrowser.open("wikipedia.com") 
+
+  
+
+        elif "Good Morning" in query: 
+
+            speak("A warm" +query) 
+
+            speak("How are you Mister") 
+
+            speak(assname) 
+
+  
+
+        # most asked question from google Assistant 
+
+        elif "will you be my gf" in query or "will you be my bf" in query:    
+
+            speak("I'm not sure about, may be you should give me some time") 
+
+  
+
+        elif "how are you" in query: 
+
+            speak("I'm fine, glad you me that") 
+
+  
+
+        elif "i love you" in query: 
+
+            speak("It's hard to understand") 
+
+  
+
+        elif "what is" in query or "who is" in query: 
+
+              
+
+            # Use the same API key  
+
+            # that we have generated earlier 
+
+            client = wolframalpha.Client("API_ID") 
+
+            res = client.query(query) 
+
+              
+
+            try: 
+
+                print (next(res.results).text) 
+
+                speak (next(res.results).text) 
+
+            except StopIteration: 
+
+                print ("No results") 
+
+  
+
+        # elif "" in query: 
+
+            # Command go here 
+
+            # For adding more commands
+
+
