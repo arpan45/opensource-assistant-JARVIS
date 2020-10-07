@@ -11,7 +11,7 @@ import wikipedia
 import pygame
 import pyautogui
 pyautogui.FAILSAFE = False
-
+import subprocess
 
 def say(audioString):
     print(audioString)
@@ -168,7 +168,13 @@ def assistant(data):
         URL = "https://www.google.com/maps/place/" + location + "/&amp;"
         webbrowser.open(URL, new=2)
 
-
+    if "open Explorer" in data:
+        os.startfile(r'''C:\Windows\EXPLORER.EXE''')
+        
+    if "open my files" in data:
+        username = os.environ.get('USERNAME')
+        subprocess.Popen(f'C:\Windows\EXPLORER.EXE /select,C:\\Users\\{username}\\Documents\\')
+        
 time.sleep(2)
 say("Hello Sir, what can I do for you?")
 while 1:
