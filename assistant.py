@@ -10,6 +10,7 @@ from random import *
 import wikipedia
 import pygame
 import pyautogui
+import geocoder
 pyautogui.FAILSAFE = False
 
 
@@ -167,6 +168,18 @@ def assistant(data):
 
         URL = "https://www.google.com/maps/place/" + location + "/&amp;"
         webbrowser.open(URL, new=2)
+
+    if "current location" in data or "what is my current location" in data:
+    	coords = geocoder.ip('me')
+    	latlon = coords.latlng
+    	city = coords.city
+    	say("Fetching current location details")
+    	lat=latlon[0]
+    	lon=latlon[1]
+    	latlon_str="Your current latitude and longitute are {} and {} respectively".format(lat,lon)
+    	say(latlon_str)
+    	say("Your current city of residence is" + city)
+
 
 
 time.sleep(2)
