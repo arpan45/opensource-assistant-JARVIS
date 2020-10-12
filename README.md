@@ -25,3 +25,4 @@ $ pip install SpeechRecognition\
 $ pip install gTTS\
 $ pip install wikipedia\
 $ pip install pygame
+$ pip install pyautogui 
