@@ -24,4 +24,5 @@ JARVIS is your Personal Assistant with useful features for Windows written in py
 $ pip install SpeechRecognition\
 $ pip install gTTS\
 $ pip install wikipedia\
-$ pip install pygame
+$ pip install pygame\
+$ pip install pyautogui 
