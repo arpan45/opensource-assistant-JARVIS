@@ -145,3 +145,5 @@ dmypy.json
 cython_debug/
 .mp3
 .txt
+test.py
+app.json
