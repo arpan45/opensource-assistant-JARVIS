@@ -1,3 +1,4 @@
+from subprocess import getoutput
 import json
 import pyttsx3
 import pyaudio
@@ -13,6 +14,10 @@ import os
 from getpass import getuser
 import shutil
 import win10toast
+from pygame import mixer
+import pyperclip
+
+
 
 
 roll = [
@@ -24,6 +29,8 @@ roll = [
     "that’s the least I could do"
     ]
 
+music_path = None
+music_list = []
 
 def notif(title, msg, dur=2):
     notif = win10toast.ToastNotifier()
@@ -78,7 +85,10 @@ def recordAudio():
 os.system("cls")
 
 def assistant(data):
-    
+    if data == None:
+        pass
+    else:
+        print(data)
     if data != None:
         if "lock" in data and "pc" in data:
             printf(data)
@@ -207,9 +217,68 @@ def assistant(data):
             printf(data)
             say(choice(roll))
 
+        elif "who are you" == data:
+            printf(data)
+            say("I am your dear")
+
+        elif "shut" in data and "up" in data or "fuck" in data and "you":
+            printf(data)
+            if "shut" in data:
+                say("hey hey\nshut up yourself")
+            elif "fuck" in data:
+                say("hey hey\nDamn you, I didn't do anything")
+
         elif data == "honey":
             printf(data)
             say("Yes Dear?")
+
+        elif "good" in data and "by" in data:
+            say("by by dear")
+            exit()
+
+        elif "start" in data and "music" in data and "engine" in data:
+            mixer.init()
+            music_path = pyperclip.paste()
+            os.chdir(music_path)
+            m = getoutput(f"dir /s /b")
+
+            m = m.split("\n")
+            for file in m:
+                if file[-4:] == ".mp3":
+                    music_list.append(file)
+                else:
+                    pass
+            global set_item
+            set_item = 1
+            say("run engine")
+            
+
+
+            
+
+        elif "play" in data and "music" in data:
+            # try:
+                say("ok")
+                print(music_list[set_item])
+                mixer.music.play(str(music_list[set_item]))
+            # except:
+            #     say("Can you copy a music folder and then say 'run the music engine'? I can't do this alone")
+
+        elif "pause" in data and "music" in data:
+            mixer.music.pause()
+
+        elif "stop" in data and "music" in data:
+            mixer.music.stop()
+
+        elif "next" in data and "music" in data:
+            
+            mixer.music.stop()
+            if len(music_list) <= set_item:
+                set_item = set_item + 1
+            else:
+                set_item = 0
+            mixer.music.load(music_list[set_item])
+            mixer.music.play()
 
 
 time.sleep(2)
