@@ -53,9 +53,8 @@ os.system("cls")
 
 
 def assistant(value):
-    if value != None:
-        print(value)
     if value is not None:
+        print(value)
         if "lock" in value and "pc" in value:
             say("i will lock the device right now")
             os.system("rundll32.exe user32.dll,LockWorkStation")
@@ -75,13 +74,6 @@ def assistant(value):
         elif "close" in value and "current" in value and "window" in value:
             pyautogui.keyDown("alt")
             pyautogui.press("f4")
-            pyautogui.keyUp("alt")
-        elif "show" in value and "start" in value and "menu" in value:
-            pyautogui.press("win")
-        elif "show" in value and "run" in value:
-            say("ok. this is run")
-            pyautogui.keyDown("alt")
-            pyautogui.press("space")
             pyautogui.keyUp("alt")
         elif "type" in value:
             value = value.split(" ")
@@ -133,8 +125,6 @@ def assistant(value):
                 say(ans)
             except wikipedia.exceptions.DisambiguationError:
                 say("can you tell me exactly again?")
-            except:
-                say("the situation became difficult and i lost control of everything. what were we talking about!?")
         elif "where" in value and "is" in value:
             value = value.split(" ")
             location = value[2]
@@ -160,7 +150,60 @@ def assistant(value):
                 exit()
             else:
                 say("do you really want this?")
-
+        elif "chenge" in value:
+            if "desktop" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("tab")
+                pyautogui.keyUp("win")
+            elif "app" in value:
+                pyautogui.keyDown("alt")
+                pyautogui.press("tab")
+                time.sleep(3)
+                pyautogui.keyUp("alt")
+        elif "show" in value:
+            if "desktop" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("d")
+                pyautogui.keyUp("win")
+            elif "widget" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("w")
+                pyautogui.keyUp("win")
+            elif "explorer" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("e")
+                pyautogui.keyUp("win")
+            elif "start" in value and "menu" in value:
+                pyautogui.press("win")
+            elif "run" in value:
+                say("ok. this is run")
+                pyautogui.keyDown("alt")
+                pyautogui.press("space")
+                pyautogui.keyUp("alt")
+        elif "action" in value:
+            if "copy" in value:
+                pyautogui.keyDown("ctrl")
+                pyautogui.press("c")
+                pyautogui.keyUp("ctrl")
+            elif "paste" in value:
+                pyautogui.keyDown("ctrl")
+                pyautogui.press("v")
+                pyautogui.keyUp("ctrl")
+            elif "cut" in value:
+                pyautogui.keyDown("ctrl")
+                pyautogui.press("x")
+                pyautogui.keyUp("ctrl")
+            elif "select" in value and "everything" in value:
+                pyautogui.keyDown("ctrl")
+                pyautogui.press("a")
+                pyautogui.keyUp("ctrl")
+        elif "music" in value:
+            if "next" in value:
+                pyautogui.press("nexttrack")
+            elif "back" in value:
+                pyautogui.press("nexttrack")
+            elif "play" in value or "pause" in value:
+                pyautogui.press("playpause")
 
         # elif "start" in data and "music" in data and "engine" in data:
         #     mixer.init()
