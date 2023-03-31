@@ -10,6 +10,7 @@ import shutil
 import pyttsx3
 from getpass import getuser
 import requests
+import winsound
 
 music_path = None
 music_list = []
@@ -64,6 +65,7 @@ def assistant(value):
             say("i will put the device to sleep right now")
             os.system("rundll32.exe powrprof.dll,SetSuspendState 0,1,0")
         elif "minimise" in value or "minimize" in value and "windows" in value:
+            winsound.Beep(400, 50)
             os.system(
                 '''powershell -command "(new-object -com shell.application).minimizeall()"''')
         elif "task" in value and "view" in value:
@@ -72,6 +74,7 @@ def assistant(value):
             pyautogui.press("tab")
             pyautogui.keyUp("win")
         elif "close" in value and "current" in value and "window" in value:
+            winsound.Beep(400, 50)
             pyautogui.keyDown("alt")
             pyautogui.press("f4")
             pyautogui.keyUp("alt")
@@ -84,6 +87,7 @@ def assistant(value):
             say("1, 2, 3, i take now screenshot")
             pyautogui.screenshot('screenshot.png')
         elif "press enter" in value:
+            winsound.Beep(400, 50)
             pyautogui.press("enter")
         elif "what time is it" in value:
             say(time.ctime())
@@ -150,7 +154,8 @@ def assistant(value):
                 exit()
             else:
                 say("do you really want this?")
-        elif "chenge" in value:
+        elif "change" in value:
+            winsound.Beep(400, 50)
             if "desktop" in value:
                 pyautogui.keyDown("win")
                 pyautogui.press("tab")
@@ -161,6 +166,7 @@ def assistant(value):
                 time.sleep(3)
                 pyautogui.keyUp("alt")
         elif "show" in value:
+            winsound.Beep(400, 50)
             if "desktop" in value:
                 pyautogui.keyDown("win")
                 pyautogui.press("d")
@@ -176,11 +182,11 @@ def assistant(value):
             elif "start" in value and "menu" in value:
                 pyautogui.press("win")
             elif "run" in value:
-                say("ok. this is run")
                 pyautogui.keyDown("alt")
                 pyautogui.press("space")
                 pyautogui.keyUp("alt")
         elif "action" in value:
+            winsound.Beep(400, 50)
             if "copy" in value:
                 pyautogui.keyDown("ctrl")
                 pyautogui.press("c")
@@ -198,6 +204,7 @@ def assistant(value):
                 pyautogui.press("a")
                 pyautogui.keyUp("ctrl")
         elif "music" in value:
+            winsound.Beep(400, 50)
             if "next" in value:
                 pyautogui.press("nexttrack")
             elif "back" in value:
