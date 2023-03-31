@@ -3,12 +3,16 @@ JARVIS is your Personal Assistant with useful features for Windows written in py
 
 # Features
   Using voice commands you can perform the following: 
-  - Lock your windows device by saying " **Lock my PC**"
-  - Put your device in **sleep mode**
+  - Lock your windows device by saying "**Lock pc**" or "**lock my pc**"
+  - Sleep the system with "**sleep pc**" or "**sleep my pc**"
   - Minimize or Close Current Window
   - Show **Taskview** 
+  - **show start menu**
+  - Show run menu (Powertoys installation prerequisite)
   - **Type anything by voice on any application**
-  - **Take notes** and auto save it to text file
+  - "**press enter**"
+  - "**what time is it**"
+  - check "**internet connection**"
   - Ask anything from **wikipedia** (eg. "**Who is Albert Einstein" or "What is coding"**)
   - Look for any places (eg. "**Where is Kolkata**")
   - Open applications in your device ( like: **open chrome**)
@@ -17,11 +21,16 @@ JARVIS is your Personal Assistant with useful features for Windows written in py
   - **Take screenshot** by Voice
   - Basic Calculations
   - Basic Q&A
+  - exit with "**really kill yourself ok?**" or "**good by**"
 
-### Run $python3 assistant.py
+### Run ``python3 assistant.py``
 
 # Install dependencies
-$ pip install SpeechRecognition\
-$ pip install gTTS\
-$ pip install wikipedia\
-$ pip install pygame
+```commandline
+pip install json
+pip install pyaudio
+pip install vosk
+pip install pyautogui
+pip install wikipedia
+pip install pyttsx3
+```

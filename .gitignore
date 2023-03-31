@@ -147,3 +147,5 @@ cython_debug/
 .txt
 test.py
 app.json
+insta_account.json
+.idea
