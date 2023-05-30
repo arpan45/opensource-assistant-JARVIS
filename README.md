@@ -1,15 +1,16 @@
-# J.A.R.V.I.S - Personal Assistant for Windows
+# J.A.R.V.I.S - Personal Assistant for Windows (Offline version)
 JARVIS is your Personal Assistant with useful features for Windows written in python3. Simple and easy to use.
 
 # Features
   Using voice commands you can perform the following: 
-  - Lock your windows device by saying "**Lock pc**" or "**lock my pc**"
-  - Sleep the system with "**sleep pc**" or "**sleep my pc**"
-  - Minimize or Close Current Window
-  - Show **Taskview** 
-  - **show start menu**
-  - Show run menu (Powertoys installation prerequisite)
-  - **Type anything by voice on any application**
+  - "**Lock pc**" or "**lock my pc**" for lock your windows
+  - "**sleep pc**" or "**sleep my pc**" for sleep the system
+  - "**minimize windows**" for Minimize Current Window
+  - "**close current windows**" for Close Current Window
+  - "**Taskview**" for show taskview
+  - "**show start menu**" for show start menu
+  - "**Show run**" ([PowerToys](https://github.com/microsoft/PowerToys) installation prerequisite, otherwise the Run window will open)
+  - "**type ...**" for type anything by voice on any application
   - "**press enter**"
   - "**what time is it**"
   - check "**internet connection**"
@@ -22,6 +23,8 @@ JARVIS is your Personal Assistant with useful features for Windows written in py
   - Basic Calculations
   - Basic Q&A
   - exit with "**really kill yourself ok?**" or "**good by**"
+  - **navigator to display received command** (Using the [LinkBar](https://github.com/ATGH15102AFMLD/Linkbar) that is in the program) NEW FEATURE!!
+  - "**move windows direction**" You can use directions to move windows (up/down/left/right)
 
 ### Run ``python3 assistant.py``
 

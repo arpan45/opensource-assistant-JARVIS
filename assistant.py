@@ -11,13 +11,17 @@ import pyttsx3
 from getpass import getuser
 import requests
 import winsound
+from setting import LINK_BAR_STATUS,POWERTOYS_STATUS
 
 music_path = None
 music_list = []
 
 pyautogui.FAILSAFE = False
 
-model = Model(r"\vosk\en-small")
+cwd = os.getcwd() + "/vosk/en-small"
+print(cwd)
+
+model = Model(cwd)
 
 recognizeren = KaldiRecognizer(model, 48000)
 cap = pyaudio.PyAudio()
@@ -26,13 +30,30 @@ stream = cap.open(format=pyaudio.paInt16, channels=1,
 stream.start_stream()
 
 
+
+def navbar(text):
+    if LINK_BAR_STATUS == True:
+        list_dir = os.listdir(f"{os.getcwd()}\\linkbar\\bar")
+        for item in list_dir:
+            if ".lnk" in item:
+                point_lnk = item
+                break
+            else:
+                pass
+            
+        if text != "":
+            os.system(f'rename "linkbar\\bar\\{point_lnk}" "{text}.lnk"')
+    else:
+        pass
+    
+
 def printf(text):
     print(text.center(shutil.get_terminal_size().columns))
 
 
 def recordaudio():
     result = None
-    stream_value = stream.read(8192)
+    stream_value = stream.read(4096)
     if recognizeren.AcceptWaveform(stream_value):
         result = recognizeren.Result()
         result = json.loads(result)
@@ -53,9 +74,15 @@ def say(text):
 os.system("cls")
 
 
-def assistant(value):
-    if value is not None:
+
+
+
+def assistant(value,run=True):
+
+    if value != None:
         print(value)
+        navbar(value)
+        
         if "lock" in value and "pc" in value:
             say("i will lock the device right now")
             os.system("rundll32.exe user32.dll,LockWorkStation")
@@ -182,9 +209,14 @@ def assistant(value):
             elif "start" in value and "menu" in value:
                 pyautogui.press("win")
             elif "run" in value:
-                pyautogui.keyDown("alt")
-                pyautogui.press("space")
-                pyautogui.keyUp("alt")
+                if POWERTOYS_STATUS == True:
+                    pyautogui.keyDown("alt")
+                    pyautogui.press("space")
+                    pyautogui.keyUp("alt")
+                else:
+                    pyautogui.keyDown("alt")
+                    pyautogui.press("r")
+                    pyautogui.keyUp("alt")
         elif "action" in value:
             winsound.Beep(400, 50)
             if "copy" in value:
@@ -211,6 +243,23 @@ def assistant(value):
                 pyautogui.press("nexttrack")
             elif "play" in value or "pause" in value:
                 pyautogui.press("playpause")
+        elif "move" in value and "windows" in value:
+            if "up" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("up")
+                pyautogui.keyUp("win")
+            elif "right" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("right")
+                pyautogui.keyUp("win")
+            elif "left" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("left")
+                pyautogui.keyUp("win")
+            elif "down" in value:
+                pyautogui.keyDown("win")
+                pyautogui.press("down")
+                pyautogui.keyUp("win")
 
         # elif "start" in data and "music" in data and "engine" in data:
         #     mixer.init()
@@ -258,3 +307,5 @@ time.sleep(2)
 while True:
     data = recordaudio()
     assistant(data)
+
+
