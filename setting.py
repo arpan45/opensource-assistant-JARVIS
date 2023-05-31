@@ -15,3 +15,9 @@ SPEECH_STATUS = True
 #
 
 POWERTOYS_STATUS = True
+
+#
+# beep sound status
+#
+
+BEEP_STATUS = True
